@@ -1,0 +1,286 @@
+:root {
+    --base-color:black;
+    --text-color: white;
+    --button-bg: rgb(50, 50, 50);
+}
+
+.darkmode {
+    --base-color: white;
+    --text-color: black;
+    --button-bg: rgb(200, 200, 200);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--base-color);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+    overflow: auto; /* Prevents unwanted scrolling */
+    position: relative;}
+    #neon-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1; /* Keeps it in the background */
+        pointer-events: none; /* Ensures it doesn’t interfere with clicks */
+    }
+/* Theme Switch */
+#theme-switch {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: var(--button-bg);
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#theme-switch i {
+    margin-top: 8.5px;
+    font-size: 20px;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+#theme-switch i:last-child {
+    display: none;
+}
+
+.darkmode #theme-switch i:first-child {
+    display: none;
+}
+
+.darkmode #theme-switch i:last-child {
+    display: block;
+}
+
+/* Logo & Navigation */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 0px;
+    height: 170px;
+}
+.logo-container{
+    height:100px ;
+    width: 200px;
+}
+
+/* Fixed Logo Sizing */
+.logo {
+    height: 100px;
+    width: 180px;
+}
+.logo img{
+transform: scale(1.8);
+    width: 120%; /* Increase size */
+    height: 80px;
+    object-fit: cover; 
+}
+
+/* Search Bar */
+.container {
+    width: 90%;
+    min-height: 15vh;
+    padding: 21%;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar {
+    width: 100%;
+    height: 50px;
+    max-width: 500px;
+    background-color: rgb(165, 163, 163);
+    border: 2px solid black;
+    opacity: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px 20px;
+    backdrop-filter: blur(10px) saturate(180%);
+}
+
+.search-bar input {
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 20px;
+    color: black;
+}
+
+::placeholder {
+    color: black;
+    font-size: 22px;
+}
+
+.search-bar button i {
+    font-size: 25px;
+    color: rgb(10, 9, 9);
+}
+
+.search-bar button {
+    border: 0;
+    border-radius: 50%;
+    width: 60px;
+    height: 36px;
+    background: rgb(165, 163, 163);;
+    cursor: pointer;
+}
+
+
+/* Pinterest Grid */
+.pcontainer {
+    width: 1400px;
+    margin: 20px auto;
+    columns: 5;
+    column-gap: 40px;
+    padding: 40px 0;
+}
+
+.pcontainer .photo {
+    width: 100%;
+    margin-bottom: 10px;
+    break-inside: avoid;
+}
+
+.pcontainer .photo img {
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+.photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.photo img {
+    width: 100%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.photo:hover img {
+    transform: scale(1.1);
+    opacity: 0.9;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Load More */
+.load-more-trigger {
+    height: 10px;
+    width: 100%;
+    background: transparent;
+}
+
+.loading {
+    text-align: center;
+    display: none;
+}
+
+/* Download & Share Buttons */
+.download-btn {
+    position: absolute;
+    bottom: 38px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.share-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 6px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.share-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal (Image Preview) */
+.modal {
+    display: none; /* Fixed issue where modal was appearing on load */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 0px;
+    object-fit: contain; /* Prevents image distortion */
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Home Button */
+.home-button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.home-button:hover {
+    background-color: #0056b3;
+}

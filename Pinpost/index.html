@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinpost</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading">Loading...</div>
+
+    <!-- Theme Switch Button -->
+    <button id="theme-switch">
+        <i class="fa-regular fa-sun"></i>
+        <i class="fa-regular fa-moon"></i>
+    </button>
+
+    <!-- Search Bar & logo -->
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo">
+                <img src="pinpost-removebg-preview2.png" alt="logo">
+            </div>
+        </div>
+        <div class="container">
+            <form action="search.html" class="search-bar" method="GET">
+                <input type="text" name="query" id="search-input" placeholder="Search posts" required/>
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Photo Gallery -->
+    <div class="pcontainer">
+        <!-- Static Images (Manually Added) -->
+        <div class="photo">
+            <img src="1.jpg" alt="Static Image">
+            <a href="1.jpg" download="image1.jpg" class="download-btn">
+                <i class="fa-solid fa-download"></i>
+            </a>
+            <button class="share-btn" onclick="shareOnSocials('3.jpg', 'Check out this amazing image!')">
+                <i class="fa-solid fa-share"></i> 
+            </button>
+        </div>
+        
+        <div class="photo">
+            <img src="2.jpg" alt="Static Image">
+            <a href="2.jpg" download="image2.jpg" class="download-btn">
+                <i class="fa-solid fa-download"></i>
+            </a>
+            <button class="share-btn" onclick="shareOnSocials('3.jpg', 'Check out this amazing image!')">
+                <i class="fa-solid fa-share"></i> 
+            </button>
+        </div>
+
+        <div class="photo">
+            <img src="3.jpg" alt="Static Image">
+            <a href="3.jpg" download="image3.jpg" class="download-btn">
+                <i class="fa-solid fa-download"></i>
+            </a>
+            <button class="share-btn" onclick="shareOnSocials('3.jpg', 'Check out this amazing image!')">
+                <i class="fa-solid fa-share"></i> 
+            </button>
+        </div>
+
+        <!-- API-Loaded Images (Dynamically Added via JS) -->
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div class="load-more-trigger"></div>
+
+    <!-- Trigger for Infinite Scrolling -->
+    <div class="load-more-trigger"></div>
+    <div id="image-modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
+</body>
+</html>
